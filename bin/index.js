@@ -1,4 +1,4 @@
-const {exec} = require('child_process');
+#! /usr/bin/env node
 const fs = require('fs-extra');
 const path = require('path');
 
