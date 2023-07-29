@@ -1,60 +1,49 @@
 # `Nestjs-React-SetUp`
 
-This package serves as the entry point to the DOM and server renderers for React. It is intended to be paired with the generic React package, which is shipped as `react` to npm.
+This package is for setting up the environment for working with Nestjs and react.
+React will be setup with vite.
+Nestjs will be setup will basic connection to a database, implementation of basic authentication and Guards with JWT.
+
 
 ## Installation
 
 ```sh
-npm install react react-dom
+npm install -g nestjs-react-setup
 ```
 
 ## Usage
 
-### In the browser
+### By running:
 
-```js
-import { createRoot } from 'react-dom/client';
-
-function App() {
-  return <div>Hello World</div>;
-}
-
-const root = createRoot(document.getElementById('root'));
-root.render(<App />);
+```sh
+npx nestjs-react-setup project-setup
 ```
 
-### On the server
+two directores that will be named "backend" and "frontend"
+
+### On the server for example
 
 ```js
-import { renderToPipeableStream } from 'react-dom/server';
+@Controller('auth')
+@UseInterceptors(TransformInterceptor)
+@UseInterceptors(TransformErrorInterceptor)
+export class AuthController {
 
-function App() {
-  return <div>Hello World</div>;
-}
+    constructor(private UserService: AuthService){}
 
-function handleRequest(res) {
-  // ... in your server handler ...
-  const stream = renderToPipeableStream(<App />, {
-    onShellReady() {
-      res.statusCode = 200;
-      res.setHeader('Content-type', 'text/html');
-      stream.pipe(res);
-    },
-    // ...
-  });
+    @UseGuards(JwtRefreshTokenGuard)
+    @Get('getAccessToken')
+    access(@Request() req) {
+      return this.UserService.generateAccessToken(req.user);
+    }
+
+    
+    @Post('createUser')
+    createUser(@Request() req , @Body() userDto: UserDto,) {
+        return this.UserService.createUser(userDto);
+    }
+
 }
 ```
 
-## API
 
-### `react-dom`
-
-See https://reactjs.org/docs/react-dom.html
-
-### `react-dom/client`
-
-See https://reactjs.org/docs/react-dom-client.html
-
-### `react-dom/server`
-
-See https://reactjs.org/docs/react-dom-server.html
