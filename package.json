@@ -28,6 +28,10 @@
     "shelljs": "^0.8.5",
     "vite": "^4.4.7"
   },
+
+  "bin": {
+    "nestjs-react-setup": "./index.js"
+  },
   "devDependencies": {
     "@types/shelljs": "^0.8.12"
   }
