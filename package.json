@@ -2,9 +2,10 @@
   "name": "nestjs-react-setup",
   "version": "1.0.0",
   "description": "will create a nestjs project with react with vite",
-  "main": "index.js",
+  "main": "bin\\index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "repository": {
     "type": "git",
@@ -30,8 +31,10 @@
   },
 
   "bin": {
-    "nestjs-react-setup": "./index.js"
+    "nestjs-react-setup": "./bin\\index.js"
   },
+
+  
   "devDependencies": {
     "@types/shelljs": "^0.8.12"
   }
