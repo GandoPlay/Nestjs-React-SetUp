@@ -1,8 +1,8 @@
 {
   "name": "nestjs-react-setup",
-  "version": "1.0.1",
-  "description": "will create a nestjs project with react with vite",
-  "main": "bin\\index.js",
+  "version": "1.0.3",
+  "description": "Node Package for setting up Nestjs with React",
+  "main": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
     
@@ -30,9 +30,8 @@
     "vite": "^4.4.7"
   },
 
-  "bin": {
-    "nestjs-react-setup": "./bin\\index.js"
-  },
+  "bin": "./index.js",
+  
 
   
   "devDependencies": {

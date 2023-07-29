@@ -21,16 +21,6 @@ async function createApp() {
 }
 
 
-  try {
-    //  exec('npm create vite@latest frontend -- --template react');
-    // console.log('Frontend project created successfully.');
-
-    //  exec('npx nest new backend --package-manager npm');
-    // console.log('Backend project created successfully.');
-  } catch (error) {
-    console.error('Error occurred during project setup:', error.message);
-  }
-
 
 if (process.argv[2] === 'project-setup') {
   createApp();
